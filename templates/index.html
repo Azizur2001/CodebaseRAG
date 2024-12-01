@@ -1,0 +1,140 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codebase Chatbot</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+      async function sendQuery() {
+        const query = document.getElementById("query").value;
+        const codebase = document.getElementById("codebase").value;
+        const responseBox = document.getElementById("response");
+
+        // Clear the response and show a loading message
+        responseBox.innerHTML = "Processing...";
+        if (!query.trim()) {
+          responseBox.innerHTML =
+            "<strong>Error:</strong> Query cannot be empty.";
+          return;
+        }
+
+        if (!codebase) {
+          responseBox.innerHTML =
+            "<strong>Error:</strong> Please select a codebase.";
+          return;
+        }
+
+        try {
+          const response = await fetch("/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ query, codebase }),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            responseBox.innerHTML = `<strong>Response:</strong> ${data.response}`;
+          } else {
+            responseBox.innerHTML =
+              "<strong>Error:</strong> Unable to fetch response.";
+          }
+        } catch (error) {
+          responseBox.innerHTML = `<strong>Error:</strong> ${error.message}`;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="chat-box">
+        <h1>Codebase Chatbot</h1>
+        <div class="chat-section">
+          <label for="codebase">Select a Codebase:</label>
+          <select id="codebase">
+            <option value="codebase_rag">Codebase RAG</option>
+            <option value="secure_agent">Secure Agent</option>
+          </select>
+          <label for="query">Ask a question:</label>
+          <input type="text" id="query" placeholder="Type your question here" />
+          <button onclick="sendQuery()">Submit</button>
+        </div>
+        <div id="response" class="response-box"></div>
+      </div>
+    </div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codebase Chatbot</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script>
+      async function sendQuery() {
+        const query = document.getElementById("query").value;
+        const codebase = document.getElementById("codebase").value;
+        const responseBox = document.getElementById("response");
+
+        // Clear the response and show a loading message
+        responseBox.innerHTML = "Processing...";
+        if (!query.trim()) {
+          responseBox.innerHTML =
+            "<strong>Error:</strong> Query cannot be empty.";
+          return;
+        }
+
+        if (!codebase) {
+          responseBox.innerHTML =
+            "<strong>Error:</strong> Please select a codebase.";
+          return;
+        }
+
+        try {
+          const response = await fetch("/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ query, codebase }),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            responseBox.innerHTML = `<strong>Response:</strong> ${data.response}`;
+          } else {
+            responseBox.innerHTML =
+              "<strong>Error:</strong> Unable to fetch response.";
+          }
+        } catch (error) {
+          responseBox.innerHTML = `<strong>Error:</strong> ${error.message}`;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="chat-box">
+        <h1>Codebase Chatbot</h1>
+        <div class="chat-section">
+          <label for="codebase">Select a Codebase:</label>
+          <select id="codebase">
+            <option value="codebase_rag">Codebase RAG</option>
+            <option value="ai-support">AI Support App</option>
+          </select>
+          <label for="query">Ask a question:</label>
+          <input type="text" id="query" placeholder="Type your question here" />
+          <button onclick="sendQuery()">Submit</button>
+        </div>
+        <div id="response" class="response-box"></div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+flask
+flask-cors
+openai
+pinecone-client
+sentence-transformers
+python-dotenv
+langchain
+langchain-pinecone
